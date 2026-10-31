@@ -1,6 +1,6 @@
 # Anleitung: Jobsuche mit Claude
 
-Dieser Ordner ist deine Jobsuche. Claude sucht jeden Tag neue Stellen auf den deutschen Jobportalen, sortiert sie danach, wie gut sie zu dir passen, schreibt Anschreiben in deinem Ton und führt Buch über deine Bewerbungen. Alles läuft auf deinem Rechner, deine Daten bleiben bei dir.
+Dieser Ordner ist deine Jobsuche. Claude sucht jeden Tag neue Stellen auf den deutschen Jobportalen, sortiert sie danach, wie gut sie zu dir passen, hilft dir beim Anschreiben und führt Buch über deine Bewerbungen. Alles läuft auf deinem Rechner, deine Daten bleiben bei dir.
 
 Du brauchst dafür kein GitHub und kein Terminal-Wissen. Die Einrichtung macht man einmal, am besten zusammen mit jemandem, der sie schon kennt. Danach redest du nur noch mit Claude.
 
@@ -14,7 +14,7 @@ Du tippst die Befehle in den Chat der Claude-App. Mehr musst du dir nicht merken
 |---|---|
 | `/setup` | Einmalig: Claude liest deinen Lebenslauf, stellt Fragen und legt dein Profil und deine Suche an |
 | `/scrape` | Neue Stellen von den Portalen holen und bewerten |
-| `/coverletter <Firma oder Link>` | Das Anschreiben für eine Stelle schreiben |
+| `/coverletter <Firma oder Link>` | Mit Claude zusammen das Anschreiben für eine Stelle schreiben |
 | `/outcome <Firma>` | Festhalten, was aus einer Bewerbung geworden ist (abgeschickt, Einladung, Absage …); Claude fragt nach |
 | `/interview <Firma>` | Vorbereitung auf ein Vorstellungsgespräch |
 | `/html-report` | Übersicht über alle Bewerbungen als Seite mit Diagrammen |
@@ -92,11 +92,11 @@ Am Ende bekommst du eine Tabelle: Passung (hoch, mittel), Titel, Firma, Ort, Geh
 /coverletter <Link zur Anzeige>
 ```
 
-Claude liest die Anzeige, prüft, was dein Lebenslauf schon zeigt und was nicht, und schreibt ein Anschreiben, das genau diese Lücke füllt, statt den Lebenslauf zu wiederholen. Firmenangaben prüft Claude vorher im Netz. Am Ende bekommst du das Anschreiben als PDF und eine Liste der Sätze, bei denen du entscheiden sollst, ob sie stimmen (behalten, abschwächen, streichen). Deinen Lebenslauf schickst du unverändert mit, Claude kennt ihn aus `/setup`.
+Claude liest die Anzeige, prüft, was dein Lebenslauf schon zeigt und was nicht, und macht einen Entwurf, der genau diese Lücke füllt, statt den Lebenslauf zu wiederholen. Firmenangaben prüft Claude vorher im Netz. Am Ende bekommst du den Entwurf als PDF und eine Liste der Sätze, bei denen du entscheiden sollst, ob sie stimmen (behalten, abschwächen, streichen). Der Brief entsteht also zusammen: Claude schlägt vor, du sagst, was du so schreiben würdest. Deinen Lebenslauf schickst du unverändert mit, Claude kennt ihn aus `/setup`.
 
-**Lies das Anschreiben immer selbst.** Wenn dir ein Satz nicht gefällt, sag es direkt, am besten mit dem Grund („klingt gestelzt“, „das würde ich so nie sagen“, „zu viel Lebenslauf“). Claude schreibt den Satz um **und merkt sich die Regel dahinter** für alle künftigen Anschreiben. So werden die Briefe mit jeder Bewerbung besser und immer mehr zu deinen.
+**Der Entwurf ist nur der Anfang.** Lies ihn und überarbeite ihn, bis du ihn so sagen würdest und dahinterstehst. Wenn dir ein Satz nicht gefällt, sag es direkt, am besten mit dem Grund („klingt gestelzt“, „das würde ich so nie sagen“, „zu viel Lebenslauf“). Claude schreibt den Satz um **und merkt sich die Regel dahinter** für alle künftigen Anschreiben. So klingen die Entwürfe mit jeder Bewerbung mehr nach dir.
 
-Die fertigen Anschreiben liegen in `cover_letters/`.
+Die Anschreiben liegen in `cover_letters/`.
 
 ### Schritt 3: Abschicken und festhalten – `/outcome`
 
