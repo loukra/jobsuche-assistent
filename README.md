@@ -30,7 +30,6 @@ Der ganze weitere Ablauf steht in der **[ANLEITUNG.md](ANLEITUNG.md)**.
 - **Deine Daten bleiben bei dir.** Lebenslauf, Anschreiben, Stellenliste und Bewerbungen liegen nur im Ordner auf deinem Rechner. Das Profil, das `/setup` in `CLAUDE.md` und die Profildateien schreibt, enthält persönliche Daten: Wenn du den Ordner jemals mit git hochlädst, dann nur in ein **privates** Repository.
 - **Portale nur zum persönlichen Gebrauch.** Die Suche liest öffentliche Seiten, teils inoffizielle Schnittstellen. Nutze sie mit wenig Volumen und für dich allein, so wie bei einem Besuch im Browser. Einige Portale verbieten automatisierten Zugriff in ihren Bedingungen.
 - **Das Kontingent.** `/scrape` verbraucht am meisten, weil Claude Anzeigen liest. Die Obergrenze steht im Suchprofil (`auto_read_max`), mehr dazu in der Anleitung.
-- **Das Anschreiben bleibt dein Text.** Lies jeden Vorschlag, ändere ihn und stehe dahinter.
 
 ## Herkunft und Lizenz
 
