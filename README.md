@@ -8,7 +8,7 @@ Claude durchsucht die deutschen Jobportale nach neuen Stellen, sortiert sie dana
 
 - sucht auf Arbeitsagentur, StepStone, XING, LinkedIn, freehire, Workwise und Instaffo, vollständig und nicht nur die erste Seite
 - bewertet neue Stellen nach deinem Profil und zeigt Gehaltsbänder samt Betrag für den Gehaltswunsch
-- schreibt mit dir zusammen das Anschreiben: Claude macht einen Entwurf, der ergänzt, was der Lebenslauf nicht sagt, und du entscheidest über jeden Satz. Deine Korrekturen merkt sich Claude für die nächsten Briefe
+- unterstützt dich bei den Anschreiben
 - führt deine Bewerbungen, bereitet Vorstellungsgespräche vor und zeigt eine Übersicht
 
 ## Einrichtung
@@ -30,7 +30,7 @@ Der ganze weitere Ablauf steht in der **[ANLEITUNG.md](ANLEITUNG.md)**.
 - **Deine Daten bleiben bei dir.** Lebenslauf, Anschreiben, Stellenliste und Bewerbungen liegen nur im Ordner auf deinem Rechner. Das Profil, das `/setup` in `CLAUDE.md` und die Profildateien schreibt, enthält persönliche Daten: Wenn du den Ordner jemals mit git hochlädst, dann nur in ein **privates** Repository.
 - **Portale nur zum persönlichen Gebrauch.** Die Suche liest öffentliche Seiten, teils inoffizielle Schnittstellen. Nutze sie mit wenig Volumen und für dich allein, so wie bei einem Besuch im Browser. Einige Portale verbieten automatisierten Zugriff in ihren Bedingungen.
 - **Das Kontingent.** `/scrape` verbraucht am meisten, weil Claude Anzeigen liest. Die Obergrenze steht im Suchprofil (`auto_read_max`), mehr dazu in der Anleitung.
-- **Das Anschreiben ist dein Text.** Claude liefert den Entwurf, du liest ihn, änderst ihn und stehst dahinter. Claude hält sich an dein Profil, kann aber trotzdem einen Satz zu stark formulieren.
+- **Das Anschreiben bleibt dein Text.** Lies jeden Vorschlag, ändere ihn und stehe dahinter. Claude hält sich an dein Profil, kann aber trotzdem einen Satz zu stark formulieren.
 
 ## Herkunft und Lizenz
 
