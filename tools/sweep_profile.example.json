@@ -1,0 +1,168 @@
+{
+  "_readme": [
+    "Search profile for tools/scrape_sweep.py. Copy this file to job_scraper/sweep_profile.json and adapt it;",
+    "/setup writes it from the candidate profile. job_scraper/ is gitignored, so the copy stays private.",
+    "areas: on-site/hybrid search areas (portal location name, radius in km, LinkedIn location string).",
+    "freehire_cities: freehire only matches exact city names, so list the places inside your areas.",
+    "remote: also sweep fully remote roles in Germany.",
+    "arbeitsagentur_fields: occupational fields (Berufsfelder) of the Bundesagentur fuer Arbeit to sweep.",
+    "xing_keywords / linkedin_remote_keywords: XING has no location-only sweep and LinkedIn remote caps at 1,000",
+    "results, so both search per keyword. Add keywords until a new one finds (almost) nothing the others missed.",
+    "relevant / excluded / core: title regexes (case-insensitive). relevant is the wide net, excluded always drops,",
+    "core marks the titles that get the fit check; the rest of relevant is only skimmed.",
+    "score: [regex, points] pairs summed over the title to order candidates; negative points push titles down.",
+    "preferred_location: optional regex on the posting's location that adds bonus points (empty = off).",
+    "auto_read: minimum score for reading a core posting in full automatically, per area (corridor) or remote.",
+    "auto_read_max: at most this many postings are read in full automatically per sweep (0 = no cap). Each read costs Claude quota (~1,500 tokens); raise it on a bigger plan.",
+    "employer_list: optional path (repo-relative) to a markdown ranking table of wished-for employers.",
+    "salary_floor: optional yearly gross minimum; tools/salary_band.py never suggests a figure below it (0 = none)."
+  ],
+  "areas": [
+    {
+      "name": "Berlin",
+      "radius_km": 30,
+      "linkedin": "Berlin, Germany"
+    }
+  ],
+  "freehire_cities": [
+    "Berlin",
+    "Potsdam"
+  ],
+  "remote": true,
+  "arbeitsagentur_fields": [
+    "Informatik",
+    "Softwareentwicklung und Programmierung",
+    "IT-Systemanalyse, -Anwendungsberatung und -Vertrieb",
+    "Technische Forschung und Entwicklung"
+  ],
+  "xing_keywords": [
+    "Software",
+    "Entwickler",
+    "Developer",
+    "Engineer",
+    "Data",
+    "KI",
+    "AI",
+    "Architekt",
+    "Programmierer",
+    "Cloud",
+    "DevOps",
+    "Machine Learning",
+    "Python",
+    "Softwareentwickler",
+    "Softwarearchitekt",
+    "Systemarchitekt",
+    "Anwendungsentwickler",
+    "KI-Entwickler",
+    "Data Scientist"
+  ],
+  "linkedin_remote_keywords": [
+    "Softwareentwickler",
+    "Software Developer",
+    "Senior Software Engineer",
+    ".NET",
+    "C#",
+    "AI Engineer",
+    "Machine Learning Engineer",
+    "Data Scientist",
+    "Software Architect",
+    "Product Engineer",
+    "Founding Engineer"
+  ],
+  "relevant": "software|softwar|entwickl|develop|engineer|ingenieur|informati|programm|coder|coding|data|daten|machine.?learning|\\bml\\b|\\bki\\b|\\bai\\b|künstlich|\\bllm|genai|agent|architekt|architect|\\bit\\b|\\bit[- /]|devops|backend|back-end|frontend|front-end|full.?stack|cloud|\\.net|c#|c\\+\\+|java|python|golang|\\bgo\\b|rust|typescript|scientist|wissenschaftl|research|forsch|analyt|algo|embedded|tech|cto\\b|head of|lead|leit|robot|autonom|solution|platform|plattform|applikation|anwendung|application|product|founding|mathemat|simulation|automatis|digital|system",
+  "excluded": "werkstudent|working student|praktik|internship|\\bintern\\b|ausbildung|azubi|auszubildend|duales? studium|dual student|abschlussarbeit|thesis|bachelorarbeit|masterarbeit|minijob|aushilfe|studentische|diplomarbeit",
+  "core": "software|softwar|developer|entwickler|programmier|engineer|informati|ingenieur.{0,25}(software|daten|ki\\b|data|system)|data|daten(?!schutz)|machine.?learning|\\bml\\b|\\bki\\b|\\bai\\b|\\bllm|genai|künstliche|agentic|agenten|architekt|architect|backend|frontend|full.?stack|devops|\\.net|c#|c\\+\\+|java|python|golang|typescript|rust\\b|cto\\b|tech lead|technical lead|lead dev|team ?lead tech|head of (engineering|tech|software|ai|data|robotics)|teamleit.{0,30}(software|entwickl|it\\b)|robot|algo|scientist|research|forsch|simulation|autonom|founding|product engineer|solution designer",
+  "score": [
+    [
+      "\\.net\\b|c#|csharp|\\bwpf\\b",
+      12
+    ],
+    [
+      "software.?(engineer|entwickl|develop|architect|architekt)|softwareentwickl|anwendungsentwickl|systementwickl|backend|back-end|full.?stack|programmier",
+      8
+    ],
+    [
+      "architekt|architect",
+      7
+    ],
+    [
+      "developer|entwickler|software.?engineer|\\b(ai|ki|ml)\\b.{0,20}engineer",
+      3
+    ],
+    [
+      "\\bai\\b|\\bki\\b|\\bllm|genai|künstliche|machine.?learning|\\bml\\b|agentic|agenten\\b|\\brag\\b",
+      8
+    ],
+    [
+      "product engineer|founding",
+      11
+    ],
+    [
+      "data scien|data engineer|daten.?(wissenschaft|ingenieur)",
+      4
+    ],
+    [
+      "senior|lead|principal|staff|teamleit|head of",
+      3
+    ],
+    [
+      "python",
+      2
+    ],
+    [
+      "\\bsap\\b|abap|s/4|salesforce|servicenow|dynamics|business central|navision|typo3|php|wordpress|shopify|magento|qlik|power ?bi",
+      -15
+    ],
+    [
+      "support|helpdesk|administrator|\\badmin\\b|service.?desk|1st|2nd|field service|techniker|monteur",
+      -12
+    ],
+    [
+      "\\bqa\\b|tester|testautomat|test engineer|quality|qualität",
+      -8
+    ],
+    [
+      "firmware|\\bsps\\b|\\bplc\\b|fpga|hardware|elektro|mechatron",
+      -8
+    ],
+    [
+      "embedded",
+      -4
+    ],
+    [
+      "junior|trainee|werkstudent|intern\\b|praktik|azubi|student",
+      -12
+    ],
+    [
+      "sales|vertrieb|account (manager|executive)|key.?account|marketing|recruit|consultant|berater|presales|customer success",
+      -10
+    ],
+    [
+      "call.?center|kundenservice|customer service|agentur|innendienst",
+      -15
+    ],
+    [
+      "\\bios\\b|android|flutter|mobile|frontend|front-end|react native|angular\\b|vue",
+      -5
+    ],
+    [
+      "security|\\bsoc\\b|pentest|network|netzwerk|infrastructure|infrastruktur|system engineer|systemingenieur|cloud engineer|devops|\\bsre\\b",
+      -5
+    ],
+    [
+      "manager|projektleit|project manager|scrum|product owner|product manager",
+      -6
+    ]
+  ],
+  "preferred_location": {
+    "pattern": "",
+    "bonus": 3
+  },
+  "auto_read": {
+    "corridor": 5,
+    "remote": 11
+  },
+  "employer_list": null,
+  "salary_floor": 0,
+  "auto_read_max": 50
+}

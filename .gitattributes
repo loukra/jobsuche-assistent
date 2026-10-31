@@ -1,0 +1,2 @@
+job_scraper/seen_jobs.json merge=seenjobs
+job_scraper/seen_index.tsv merge=union
